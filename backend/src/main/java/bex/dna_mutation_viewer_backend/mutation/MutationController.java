@@ -1,4 +1,4 @@
-package mutation;
+package bex.dna_mutation_viewer_backend.mutation;
 
 
 import org.springframework.beans.factory.annotation.Autowired;

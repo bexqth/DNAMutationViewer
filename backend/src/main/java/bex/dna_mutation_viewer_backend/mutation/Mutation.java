@@ -1,4 +1,4 @@
-package mutation;
+package bex.dna_mutation_viewer_backend.mutation;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -9,7 +9,7 @@ import jakarta.persistence.Id;
 public class Mutation {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
     private String geneName;
