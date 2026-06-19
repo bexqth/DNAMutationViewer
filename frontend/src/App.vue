@@ -31,6 +31,7 @@
     justify-content: center;
     gap: 1rem;
     margin-top: 1rem;
+    height: 60px;
   }
 
   .navbar-btn {
