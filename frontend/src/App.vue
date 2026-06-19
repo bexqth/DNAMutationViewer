@@ -1,47 +1,54 @@
+<!-- src/App.vue -->
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+  import Button from 'primevue/button'
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+  <div class="full-container flex flex-column">
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+    <div class="navbar-container">
+        <Button @click="$router.push('mutations')" class="navbar-btn" label="Mutation List" />
+        <Button @click="$router.push('mutation-viewer')" class="navbar-btn" label="Mutation Viewer" />
+        <Button @click="$router.push('new-mutation')" class="navbar-btn" label="Add new" />
     </div>
-  </header>
 
-  <main>
-    <TheWelcome />
-  </main>
+    <div class="content-container">
+      <RouterView />
+    </div>
+
+  </div>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-}
+<style>
+  html, body {
+    background-color: #ebeef3;
+  }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
+  .navbar-container {
     display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
   }
 
-  .logo {
-    margin: 0 2rem 0 0;
+  .navbar-btn {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    background: #83ade2 !important;
+    border: none !important;
+    cursor: pointer;
+    border-radius: 20px !important;
+    font-family: "Inter var", "Inter", sans-serif !important;
   }
 
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
+  .navbar-btn:hover {
+    background: none !important;
+    border: 1px solid black !important;
+    color: #83ade2 !important;
+    transform: scale(1.05);
   }
-}
+
+
 </style>
