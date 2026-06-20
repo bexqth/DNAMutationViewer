@@ -1,14 +1,44 @@
 <script setup>
-  import {ref} from "vue";
+import {ref, watch} from "vue";
   import Avatar from "primevue/avatar";
 
-  const refBase1 = ref('A');
-  const refBase2 = ref('T');
-
-  const altBase1 = ref('C');
-  const altBase2 = ref('G');
-
   const props = defineProps(["selectedMutation"]);
+
+  const refBase1 = ref();
+  const refBase2 = ref();
+
+  const altBase1 = ref();
+  const altBase2 = ref();
+
+  const defineBasicPair = (selectedMutation) => {
+    console.log(selectedMutation);
+    refBase1.value = selectedMutation.refAllele;
+    altBase1.value = selectedMutation.altAllele;
+    refBase2.value = assignNucleotide(refBase1.value);
+    altBase2.value = assignNucleotide(altBase1.value);
+  }
+
+  const assignNucleotide = (nucleotide) => {
+    switch (nucleotide) {
+      case "A":
+        return "T";
+      case "T":
+          return "A"
+      case "C":
+        return "G";
+      case "G":
+        return "C"
+    }
+  }
+
+  watch(() => props.selectedMutation,
+      (newVal) => {
+        defineBasicPair(newVal);
+      },
+      {
+        immediate: true
+      }
+  );
 
 </script>
 
