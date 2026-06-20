@@ -1,6 +1,8 @@
 <script setup>
 
 import Avatar from "primevue/avatar";
+import MutationNucleotideInfo from "@/components/mutation-list/MutationNucleotideInfo.vue";
+import MutationInfo from "@/components/mutation-list/MutationInfo.vue";
 </script>
 
 <template>
@@ -10,9 +12,11 @@ import Avatar from "primevue/avatar";
     </div>
 
     <div class="dna-nucleotide-container">
+      <MutationNucleotideInfo></MutationNucleotideInfo>
     </div>
 
     <div class="dna-info-container">
+      <MutationInfo></MutationInfo>
     </div>
 
   </div>
