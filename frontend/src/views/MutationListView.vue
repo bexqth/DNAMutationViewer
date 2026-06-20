@@ -10,6 +10,8 @@
     { geneName: 'EGFR', chromosome: '7', position: '55242465', refAllele: 'A', altAllele: 'T', impact: 'low' }
   ]);
 
+  const selectedMutation = ref(mutations.value[0]);
+
 </script>
 
 
@@ -19,7 +21,7 @@
 
     <div class="content-container">
       <div class="table-container">
-        <DataTable class="data-table" :value="mutations">
+        <DataTable class="data-table" :value="mutations" v-model:selection="selectedMutation" selection-mode="single">
           <Column field="geneName" header="Gene name" sortable style="width: 25%"></Column>
           <Column field="chromosome" header="Chromosome"></Column>
           <Column field="position" header="Position"></Column>
@@ -30,7 +32,7 @@
       </div>
 
       <div class="dna-container">
-        <MutationSideBar></MutationSideBar>
+        <MutationSideBar :selectedMutation = "selectedMutation"></MutationSideBar>
       </div>
     </div>
 

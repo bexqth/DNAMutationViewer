@@ -1,12 +1,7 @@
 <script setup>
-import { ref } from "vue";
 
-const selectedMutation = ref({
-  geneName: 'BRCA1',
-  chromosome: '17',
-  position: '43044295',
-  impact: 'HIGH'
-});
+  const props = defineProps(["selectedMutation"]);
+
 </script>
 
 <template>
@@ -14,23 +9,23 @@ const selectedMutation = ref({
 
     <div class="info-item">
       <span class="info-label">Gene Name:</span>
-      <span class="info-text">{{ selectedMutation.geneName }}</span>
+      <span class="info-text">{{ props.selectedMutation.geneName }}</span>
     </div>
 
     <div class="info-item">
       <span class="info-label">Chromosome:</span>
-      <span class="info-text">{{ selectedMutation.chromosome }}</span>
+      <span class="info-text">{{ props.selectedMutation.chromosome }}</span>
     </div>
 
     <div class="info-item">
       <span class="info-label">Position:</span>
-      <span class="info-text">{{ selectedMutation.position }}</span>
+      <span class="info-text">{{ props.selectedMutation.position }}</span>
     </div>
 
     <div class="info-item">
       <span class="info-label">Impact:</span>
-      <span :class="['impact-badge', selectedMutation.impact.toLowerCase()]">
-        {{ selectedMutation.impact }}
+      <span :class="['impact-badge', props.selectedMutation.impact.toLowerCase()]">
+        {{ props.selectedMutation.impact }}
       </span>
     </div>
 

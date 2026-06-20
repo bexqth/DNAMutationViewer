@@ -7,6 +7,9 @@
 
   const altBase1 = ref('C');
   const altBase2 = ref('G');
+
+  const props = defineProps(["selectedMutation"]);
+
 </script>
 
 <template>
@@ -27,6 +30,7 @@
 </template>
 
 <style>
+
   .nucleotide-container {
     display: flex;
     flex-direction: column;

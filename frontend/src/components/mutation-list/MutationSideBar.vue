@@ -1,8 +1,11 @@
 <script setup>
 
-import Avatar from "primevue/avatar";
-import MutationNucleotideInfo from "@/components/mutation-list/MutationNucleotideInfo.vue";
-import MutationInfo from "@/components/mutation-list/MutationInfo.vue";
+  import Avatar from "primevue/avatar";
+  import MutationNucleotideInfo from "@/components/mutation-list/MutationNucleotideInfo.vue";
+  import MutationInfo from "@/components/mutation-list/MutationInfo.vue";
+
+  const props = defineProps(["selectedMutation"]);
+
 </script>
 
 <template>
@@ -12,11 +15,11 @@ import MutationInfo from "@/components/mutation-list/MutationInfo.vue";
     </div>
 
     <div class="dna-nucleotide-container">
-      <MutationNucleotideInfo></MutationNucleotideInfo>
+      <MutationNucleotideInfo :selectedMutation = "props.selectedMutation"></MutationNucleotideInfo>
     </div>
 
     <div class="dna-info-container">
-      <MutationInfo></MutationInfo>
+      <MutationInfo :selectedMutation = "props.selectedMutation"></MutationInfo>
     </div>
 
   </div>
