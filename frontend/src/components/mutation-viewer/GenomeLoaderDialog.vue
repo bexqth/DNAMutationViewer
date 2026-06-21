@@ -1,19 +1,39 @@
 <script setup>
+  import {ref} from "vue";
+  import {FileUpload} from "primevue";
+
+  const loadedFastaFile = ref();
+
+  const onUpload = () => {
+    console.log("Upload");
+  }
 
 </script>
 
 <template>
-  <div class="load-container">
-    <img src="../../assets/loading.png" alt="Upload FASTA" class="upload-icon"/>
+  <FileUpload
+      name="fastaFile"
+      mode="advanced"
+      @upload = "onUpload"
+      :multiple="false"
+      accept="image/*"
+      :maxFileSize="5000000000"
+  >
+    <template #empty>
+      <div class="load-container">
+        <img src="../../assets/loading.png" alt="Upload FASTA" class="upload-icon"/>
+        <div class="text-group">
+          <p class="main-text">Drag & drop your <strong>.fasta</strong> file here</p>
+        </div>
+      </div>
+    </template>
+  </FileUpload>
 
-    <div class="text-group">
-      <p class="main-text">Drag & drop your <strong>.fasta</strong> file here</p>
-      <p class="sub-text">or click to browse your computer</p>
-    </div>
-  </div>
 </template>
 
 <style scoped>
+
+
 
 .load-container {
   display: flex;

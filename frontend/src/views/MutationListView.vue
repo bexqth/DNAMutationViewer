@@ -1,17 +1,18 @@
 <script setup>
   import DataTable from 'primevue/datatable';
   import Column from 'primevue/column';
-  import { ref, onMounted } from 'vue';
   import MutationSideBar from "@/components/mutation-list/MutationSideBar.vue";
+  import {useMutations} from "@/composables/useMutations.js";
 
-  const mutations = ref([
+  /*const mutations = ref([
     { geneName: 'BRCA1', chromosome: '17', position: '43044295', refAllele: 'T', altAllele: 'G', impact: 'high' },
     { geneName: 'TP53', chromosome: '17', position: '7673767', refAllele: 'C', altAllele: 'A', impact: 'medium' },
     { geneName: 'EGFR', chromosome: '7', position: '55242465', refAllele: 'A', altAllele: 'T', impact: 'low' }
-  ]);
+  ]);*/
 
-  const selectedMutation = ref(mutations.value[0]);
-
+  const {mutations, error, isLoading, selectedMutation} = useMutations();
+  console.log("selected mutation in view")
+  console.log(selectedMutation);
 </script>
 
 
@@ -32,7 +33,8 @@
       </div>
 
       <div class="dna-container">
-        <MutationSideBar :selectedMutation = "selectedMutation"></MutationSideBar>
+        <ProgressSpinner v-if="isLoading"></ProgressSpinner>
+         <MutationSideBar v-else :selectedMutation = "selectedMutation"></MutationSideBar>
       </div>
     </div>
 
