@@ -20,8 +20,31 @@
 </template>
 
 <style>
+
   html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
     background-color: #ebeef3;
+  }
+
+  .full-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+  }
+
+  .content-container {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    height: 0;
   }
 
   .navbar-container {

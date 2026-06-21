@@ -2,8 +2,10 @@ import './assets/main.css'
 
 import { createApp } from 'vue'
 import PrimeVue from 'primevue/config'
-import Aura from '@primevue/themes/aura'
+import Aura from '@primevue/themes/aura';
 import Tooltip from 'primevue/tooltip'
+import 'primeicons/primeicons.css'
+
 
 import App from './App.vue'
 import router from './router'
@@ -17,7 +19,10 @@ app.use(PrimeVue, {
         options: {
             prefix: 'p',
             darkModeSelector: 'system',
-            cssLayer: false
+            cssLayer: {
+                name: 'primevue',
+                order: 'primevue'
+            }
         }
     }
 })

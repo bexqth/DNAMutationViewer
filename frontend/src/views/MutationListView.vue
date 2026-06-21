@@ -43,6 +43,9 @@
 
   .title{
     margin-left: 10px;
+    font-family: 'Inter', sans-serif;
+    text-transform: uppercase;
+    color: #0f191f;
   }
 
   .mutation-list {
@@ -87,12 +90,6 @@
     display: flex;
     min-width: 300px;
     max-width: 300px;
-  }
-
-  .title{
-    font-family: 'Inter', sans-serif;
-    text-transform: uppercase;
-    color: #0f191f;
   }
 
 </style>
