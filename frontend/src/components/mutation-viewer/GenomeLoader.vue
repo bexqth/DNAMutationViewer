@@ -12,7 +12,7 @@
     <h3 class="genome-title">Genome loader</h3>
     <Button class="genome-load-btn" @click="genomeDialogVisible = true">Load Fasta</Button>
 
-    <Dialog v-model:visible="genomeDialogVisible" header="Fasta genome loader">
+    <Dialog v-model:visible="genomeDialogVisible" header="Fasta genome loader" :draggable="false">
       <GenomeLoaderDialog></GenomeLoaderDialog>
     </Dialog>
 
@@ -22,8 +22,14 @@
 
 <style>
 
-  dialog{
-    font-family: "Inter var", "Inter", sans-serif;
+  .p-dialog-header {
+    padding: 16px 24px 8px 24px !important;
+  }
+
+  .p-dialog-title {
+    font-family: "Inter var", "Inter", sans-serif !important;
+    font-size: 1.2rem;
+    color: #0f191f;
   }
 
   .genome-header{
