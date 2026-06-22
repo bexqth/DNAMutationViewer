@@ -1,15 +1,12 @@
 <script setup>
 import { ref } from 'vue';
-import Select from 'primevue/select'; // Ak používaš PrimeVue v3, zmeň na 'primevue/dropdown'
+import Select from 'primevue/select';
 import InputNumber from 'primevue/inputnumber';
 import Checkbox from 'primevue/checkbox';
 
-// Reaktívne premenné pre form
-const selectedChromosome = ref('chr21'); // Predvolene najmenší na testovanie
+const selectedChromosome = ref('chr21');
 const startPosition = ref(null);
 const endPosition = ref(null);
-const limitEnabled = ref(true);
-const maxRows = ref(5000);
 
 const chromosomes = ref([
   { name: 'Chromosome 21 (~35 MB)', value: 'chr21' },

@@ -10,8 +10,6 @@ export function useMutations() {
     const fetchMutations = async () => {
         try {
             const response = await mutationService.getMutations();
-            //console.log("RESPONCE DATA");
-            //console.log(response.data);
             mutations.value = response.data;
             console.log("selected mutation in composable")
             console.log(response.data[0]);
@@ -25,7 +23,17 @@ export function useMutations() {
         }
     }
 
+    const uploadGenomeFasta = async (fastaFile, inputSettings) => {
+        try {
+            const response = await mutationService.postUploadGenomeFasta(fastaFile, inputSettings);
+        }
+        catch (e) {
+            error.value = e;
+        }
+
+    }
+
     onMounted(fetchMutations);
 
-    return {mutations, isLoading, error, selectedMutation};
+    return {mutations, isLoading, error, selectedMutation, uploadGenomeFasta};
 }

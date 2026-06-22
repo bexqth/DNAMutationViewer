@@ -5,7 +5,6 @@
   import GenomeLoaderDialog from "@/components/mutation-viewer/GenomeLoaderDialog.vue";
   import GenomeForm from "@/components/mutation-viewer/GenomeForm.vue";
   const genomeDialogVisible = ref(false)
-
 </script>
 
 <template>

@@ -1,11 +1,16 @@
 <script setup>
   import {ref} from "vue";
   import {FileUpload} from "primevue";
+  import {useMutations} from "@/composables/useMutations.js";
 
-  const loadedFastaFile = ref();
+  const {uploadGenomeFasta} = useMutations();
 
-  const onUpload = () => {
+  const onUpload = (event) => {
+    const loadedFile = event.files[0];
+    console.log(loadedFile);
     console.log("Upload");
+    const inputSettings = {};
+    uploadGenomeFasta(loadedFile, inputSettings)
   }
 
 </script>
@@ -14,7 +19,8 @@
   <FileUpload
       name="fastaFile"
       mode="advanced"
-      @upload = "onUpload"
+      :custom-upload = "true"
+      @uploader = "onUpload"
       :multiple="false"
       accept="image/*"
       :maxFileSize="5000000000"
