@@ -3,24 +3,39 @@
   import Dialog from 'primevue/dialog'
   import {ref} from "vue";
   import GenomeLoaderDialog from "@/components/mutation-viewer/GenomeLoaderDialog.vue";
+  import GenomeForm from "@/components/mutation-viewer/GenomeForm.vue";
   const genomeDialogVisible = ref(false)
 
 </script>
 
 <template>
-  <div class="genome-header">
-    <h3 class="genome-title">Genome loader</h3>
-    <Button class="genome-load-btn" @click="genomeDialogVisible = true">Load Fasta</Button>
+  <div class="genome-loader-container">
+    <div class="genome-header">
+      <h3 class="genome-title">Genome loader</h3>
+      <Button class="genome-load-btn" @click="genomeDialogVisible = true">Load Fasta</Button>
+    </div>
 
-    <Dialog v-model:visible="genomeDialogVisible" header="Fasta genome loader" :draggable="false">
-      <GenomeLoaderDialog></GenomeLoaderDialog>
-    </Dialog>
+    <div class="genome-content">
+      <GenomeForm></GenomeForm>
 
+      <Dialog v-model:visible="genomeDialogVisible" header="Fasta genome loader" :draggable="false">
+        <GenomeLoaderDialog></GenomeLoaderDialog>
+      </Dialog>
+    </div>
   </div>
 
 </template>
 
 <style>
+  .genome-loader-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .genome-content{
+    display: flex;
+    flex-direction: column;
+  }
 
   .p-dialog-header {
     padding: 16px 24px 8px 24px !important;
