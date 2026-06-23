@@ -5,6 +5,9 @@
   import GenomeLoaderDialog from "@/components/mutation-viewer/GenomeLoaderDialog.vue";
   import GenomeForm from "@/components/mutation-viewer/GenomeForm.vue";
   const genomeDialogVisible = ref(false)
+
+  const genomeFormData = ref({});
+
 </script>
 
 <template>
@@ -15,10 +18,10 @@
     </div>
 
     <div class="genome-content">
-      <GenomeForm></GenomeForm>
+      <GenomeForm v-model = "genomeFormData"></GenomeForm>
 
       <Dialog v-model:visible="genomeDialogVisible" header="Fasta genome loader" :draggable="false">
-        <GenomeLoaderDialog></GenomeLoaderDialog>
+        <GenomeLoaderDialog :genomeFormData = "genomeFormData"></GenomeLoaderDialog>
       </Dialog>
     </div>
   </div>

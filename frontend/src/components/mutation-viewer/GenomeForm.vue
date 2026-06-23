@@ -4,9 +4,7 @@ import Select from 'primevue/select';
 import InputNumber from 'primevue/inputnumber';
 import Checkbox from 'primevue/checkbox';
 
-const selectedChromosome = ref('chr21');
-const startPosition = ref(null);
-const endPosition = ref(null);
+const genomeFormData = defineModel();
 
 const chromosomes = ref([
   { name: 'Chromosome 21 (~35 MB)', value: 'chr21' },
@@ -24,7 +22,7 @@ const chromosomes = ref([
       <div class="form-field">
         <label for="chrom">Chromosome</label>
         <Select
-            v-model="selectedChromosome"
+            v-model="genomeFormData.selectedChromosome"
             :options="chromosomes"
             optionLabel="name"
             optionValue="value"
@@ -38,7 +36,7 @@ const chromosomes = ref([
           <label for="start">Start Position (bp)</label>
           <InputNumber
               id="start"
-              v-model="startPosition"
+              v-model="genomeFormData.startPosition"
               placeholder="e.g. 100000"
               class="custom-input"
           />
@@ -47,7 +45,7 @@ const chromosomes = ref([
           <label for="end">End Position (bp)</label>
           <InputNumber
               id="end"
-              v-model="endPosition"
+              v-model="genomeFormData.endPosition"
               placeholder="e.g. 500000"
               class="custom-input"
           />

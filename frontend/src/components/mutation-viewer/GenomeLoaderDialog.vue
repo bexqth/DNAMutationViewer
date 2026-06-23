@@ -4,13 +4,13 @@
   import {useMutations} from "@/composables/useMutations.js";
 
   const {uploadGenomeFasta} = useMutations();
+  const props = defineProps(["genomeFormData"]);
 
   const onUpload = (event) => {
     const loadedFile = event.files[0];
-    console.log(loadedFile);
+    console.log(props.genomeFormData);
     console.log("Upload");
-    const inputSettings = {};
-    uploadGenomeFasta(loadedFile, inputSettings)
+    uploadGenomeFasta(loadedFile, props.genomeFormData)
   }
 
 </script>
@@ -38,8 +38,6 @@
 </template>
 
 <style scoped>
-
-
 
 .load-container {
   display: flex;
