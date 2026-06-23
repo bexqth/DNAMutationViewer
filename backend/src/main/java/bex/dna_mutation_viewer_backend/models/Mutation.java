@@ -1,4 +1,4 @@
-package bex.dna_mutation_viewer_backend.mutation;
+package bex.dna_mutation_viewer_backend.models;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

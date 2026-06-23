@@ -1,4 +1,6 @@
-package bex.dna_mutation_viewer_backend.mutation;
+package bex.dna_mutation_viewer_backend.services;
+
+import bex.dna_mutation_viewer_backend.models.Mutation;
 
 import java.util.List;
 
