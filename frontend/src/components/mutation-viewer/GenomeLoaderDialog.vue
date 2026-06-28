@@ -22,7 +22,7 @@
       :custom-upload = "true"
       @uploader = "onUpload"
       :multiple="false"
-      accept="image/*"
+      accept=".fasta,.fa"
       :maxFileSize="5000000000"
   >
     <template #empty>
