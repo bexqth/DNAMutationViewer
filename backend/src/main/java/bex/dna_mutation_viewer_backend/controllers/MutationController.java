@@ -26,6 +26,7 @@ public class MutationController {
 
         System.out.println("File: " + fastaFile.getOriginalFilename());
         System.out.println("User settings: " + genomeSettingDto);
+        this.mutService.analyzeFastaGenomeFile(fastaFile, userSettings);
         return null;
     };
 

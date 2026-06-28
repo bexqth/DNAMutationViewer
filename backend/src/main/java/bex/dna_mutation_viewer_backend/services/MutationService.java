@@ -25,6 +25,10 @@ public class MutationService {
         return (List<Mutation>) mutRepository.findAll();
     }
 
+    public List<Mutation> fetchMutationsByChromosome(String chromosome) {
+        return (List<Mutation>) mutRepository.findByChromosome(chromosome);
+    }
+
     public void analyzeFastaGenomeFile(MultipartFile fastaFile, GenomeSettingDto userSettings) {
         try {
             BufferedReader reader = new BufferedReader(new InputStreamReader(fastaFile.getInputStream()));
@@ -34,10 +38,26 @@ public class MutationService {
                 if(line.startsWith(">")) {
                     continue;
                 }
-                stringBuilder.append(line.trim());
+                stringBuilder.append(line.trim().toUpperCase());
             }
             reader.close();
             String fastaContent = stringBuilder.toString();
+            String genomeSubstring = fastaContent.substring(userSettings.startPosition().intValue(), userSettings.endPosition().intValue());
+            List<Mutation> possibleMutations = mutRepository.findByChromosome(userSettings.selectedChromosome());
+
+            for (int i = 0; i < possibleMutations.size(); i++) {
+                if (userSettings.startPosition() <= possibleMutations.get(i).getPosition() && userSettings.endPosition() >= possibleMutations.get(i).getPosition()) {
+                    Long substringPosition = possibleMutations.get(i).getPosition() - userSettings.startPosition();
+                    String nucleotide = genomeSubstring.substring(substringPosition.intValue(), substringPosition.intValue() + 1);
+                    System.out.println(possibleMutations.get(i).getGeneName());
+                    System.out.println(possibleMutations.get(i).getPosition());
+                    System.out.println(possibleMutations.get(i).getAltAllele());
+                    System.out.println(possibleMutations.get(i).getRefAllele());
+                    System.out.println(nucleotide);
+                }
+            }
+
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
